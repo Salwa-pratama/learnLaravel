@@ -3,33 +3,20 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Home Page']);
 });
 
 Route::get("/about", function () {
-    return view("about", ["nama" => "Ananda Salwa Pratama"]);
+    return view("about",  ['title' => 'About']);
 });
 
 
 Route::get("/blogs", function () {
-    return view("blogs");
+    return view("blogs" ,['title' => 'Blogs']);
 });
 
 Route::get("/contacts" , function () {
-        $contacts = [
-        [
-            "name" => "Andi",
-            "phone" => "081234567890"
-        ],
-        [
-            "name" => "Budi",
-            "phone" => "082334567890"
-        ],
-        [
-            "name" => "Cici",
-            "phone" => "083434567890"
-        ],
-    ];
-    return view("contacts", compact('contacts'));
+
+    return view("contacts", ['title' => 'Contacts']);
 });
 

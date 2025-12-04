@@ -1,10 +1,4 @@
-<div>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contacts">Contact</a>
-        <a href="/blogs">Blogs</a>
-    </nav>
-    <h1>Halaman About</h1>
-    <h3>{{ $nama }}</h3>
-</div>
+<x-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
+    <h1>Halaman about</h1>
+</x-layout>
