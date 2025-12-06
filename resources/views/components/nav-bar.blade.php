@@ -1,3 +1,12 @@
+@php
+    $menus = [
+        ['name' => 'Home', 'href' => '/'],
+        ['name' => 'About', 'href' => 'about'],
+        ['name' => 'Blogs', 'href' => 'blogs'],
+        ['name' => 'Contacts', 'href' => 'contacts'],
+    ];
+@endphp
+
 <header class="min-h-full">
     <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -10,27 +19,11 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                            <a href="/"
-                                class="{{ request()->is('/') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}
-                                rounded-md px-3 py-2 text-sm font-medium">
-                                Home
-                            </a>
-                            <a href="/about"
-                                class="{{ request()->is('about') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}
-                                rounded-md px-3 py-2 text-sm font-medium">
-                                About
-                            </a>
-                            <a href="/blogs"
-                                class="{{ request()->is('blogs') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}
-                                rounded-md px-3 py-2 text-sm font-medium">
-                                Blogs
-                            </a>
-                            <a href="/contacts"
-                                class="{{ request()->is('contacts') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }}
-                                rounded-md px-3 py-2 text-sm font-medium">
-                                Contact
-                            </a>
-
+                            @foreach ($menus as $menu)
+                                <x-nav-link href="{{ $menu['href'] }}" :active="request()->is(ltrim($menu['href'], 'home'))">
+                                    {{ $menu['name'] }}
+                                </x-nav-link>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -96,14 +89,11 @@
         <el-disclosure id="mobile-menu" hidden class="md:hidden [&:not([hidden])]:block">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                 <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                <a href="/" aria-current="page"
-                    class="{{ request()->is('/') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} block rounded-md  px-3 py-2 text-base font-medium ">Home</a>
-                <a href="/about"
-                    class="{{ request()->is('about') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} block rounded-md px-3 py-2 text-base font-medium ">About</a>
-                <a href="/blogs"
-                    class="{{ request()->is('blogs') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} block rounded-md px-3 py-2 text-base font-medium ">Blogs</a>
-                <a href="/contacts"
-                    class="{{ request()->is('contacts') ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} block rounded-md px-3 py-2 text-base font-medium ">contact</a>
+                @foreach ($menus as $menu)
+                    <x-nav-link-mobile href="{{ $menu['href'] }}" :active="request()->is(ltrim($menu['href'], 'home'))">
+                        {{ $menu['name'] }}
+                    </x-nav-link-mobile>
+                @endforeach
             </div>
             <div class="border-t border-white/10 pb-3 pt-4">
                 <div class="flex items-center px-5">

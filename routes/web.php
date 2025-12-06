@@ -12,11 +12,10 @@ Route::get("/about", function () {
 
 
 Route::get("/blogs", function () {
-    return view("blogs" ,['title' => 'Blogs']);
+    return view("blogs", ['title' => 'Blogs']);
 });
 
-Route::get("/contacts" , function () {
+Route::get("/contacts", function () {
 
     return view("contacts", ['title' => 'Contacts']);
 });
-
