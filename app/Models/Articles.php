@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property string $slug
@@ -13,6 +14,7 @@ use Illuminate\Support\Arr;
  */
 class Articles extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'slug',
         'title',
