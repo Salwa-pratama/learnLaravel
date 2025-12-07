@@ -17,13 +17,8 @@ Route::get("/blogs", function () {
     return view("blogs", ['title' => 'Blogs', 'article' => Articles::all()]);
 });
 
-Route::get("/blog/{slug}", function ($slug) {
-    // get One By Slug Title Article
-    $data = Articles::getOne($slug);
-    if (! $data) {
-        abort(404);
-    };
-    return view("blogdetail", ['blog' => $data]);
+Route::get("/blog/{articles:slug}", function (Articles $articles) {
+    return view("blogdetail", ['blog' => $articles]);
 });
 
 Route::get("/contacts", function () {

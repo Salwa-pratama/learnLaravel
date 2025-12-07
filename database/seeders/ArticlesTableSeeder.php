@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
+use App\Models\Articles;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,34 +15,34 @@ class ArticlesTableSeeder extends Seeder
     {
         $data = [
             [
-                "slug" => "article-judul-1",
-                "title" => "Artikle 1",
-                "author_and_date" => "Ananda Salwa Pratama | 6 desember 2025",
-                "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
+                "slug" => "bangun-pagi-tapi-malas",
+                "title" => "Bangun Pagi Tapi Masih Malas? Ini Tipsnya!",
+                "author" => "Ananda Salwa Pratama",
+                "isi" => "Mulai hari dengan rutinitas sederhana bisa bikin energi naik. Cukup sarapan ringan, minum air, dan stretching 5 menit sudah cukup untuk bikin tubuh dan pikiran lebih segar sepanjang hari."
             ],
             [
-                "slug" => "article-judul-2",
-                "title" => "Artikle 2",
-                "author_and_date" => "Siabis | 6 desember 2025",
-                "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
+                "slug" => "belajar-sambil-ngopi",
+                "title" => "Belajar Sambil Ngopi, Produktivitas Makin Mantap",
+                "author" => "Siabis",
+                "isi" => "Belajar sesuatu yang baru sambil menikmati kopi favorit bisa membuka perspektif baru. Catat hal penting dan jangan takut mencoba metode belajar unik agar tetap semangat."
             ],
             [
-                "slug" => "article-judul-3",
-                "title" => "Artikle 3",
-                "author_and_date" => "myanmar | 2 april 2025",
-                "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
+                "slug" => "meditasi-sambil-nonton",
+                "title" => "Meditasi Sambil Nonton? Bisa Kok!",
+                "author" => "Myanmar",
+                "isi" => "Menjaga kesehatan mental penting. Luangkan waktu untuk meditasi singkat atau teknik relaksasi sambil menikmati hiburan ringan agar pikiran tetap tenang dan fokus."
             ],
             [
-                "slug" => "article-judul-4",
-                "title" => "Artikle 4",
-                "author_and_date" => "arab | 04 November 2025",
-                "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
-
+                "slug" => "teknologi-biar-ga-bete",
+                "title" => "Teknologi Biar Ga Bete? Ini Caranya!",
+                "author" => "Arab",
+                "isi" => "Teknologi bisa bikin hidup lebih mudah jika digunakan bijak. Gunakan aplikasi untuk produktivitas, manajemen keuangan, atau belajar hal baru sehingga hari-hari lebih menyenangkan."
             ]
         ];
 
+
         foreach ($data as $item) {
-            Article::updateOrCreate(
+            Articles::updateOrCreate(
                 ['slug' => $item['slug']],
                 $item
             );

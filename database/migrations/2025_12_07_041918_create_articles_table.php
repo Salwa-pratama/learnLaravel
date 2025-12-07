@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('author_and_date')->nullable();
+            $table->string('author')->nullable();
             $table->text('isi');
             $table->timestamps();
         });
