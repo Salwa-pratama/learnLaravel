@@ -1,56 +1,51 @@
 <?php
-// ini untuk mgasih tau laravel secara sesifik dimana kode ini berada
-namespace App\Models;
 
-use Illuminate\Support\Arr;
+namespace Database\Seeders;
 
-class Articles
+use App\Models\Article;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class ArticlesTableSeeder extends Seeder
 {
-    public static function all(): array
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        $dummyArt = [
+        $data = [
             [
-                "id" => 1,
                 "slug" => "article-judul-1",
                 "title" => "Artikle 1",
-                "date" => "Ananda Salwa Pratama | 6 desember 2025",
+                "author_and_date" => "Ananda Salwa Pratama | 6 desember 2025",
                 "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
             ],
             [
-                "id" => 2,
                 "slug" => "article-judul-2",
                 "title" => "Artikle 2",
-                "date" => "Siabis | 6 desember 2025",
+                "author_and_date" => "Siabis | 6 desember 2025",
                 "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
             ],
             [
-                "id" => 3,
                 "slug" => "article-judul-3",
                 "title" => "Artikle 3",
-                "date" => "myanmar | 2 april 2025",
+                "author_and_date" => "myanmar | 2 april 2025",
                 "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
             ],
+            [
+                "slug" => "article-judul-4",
+                "title" => "Artikle 4",
+                "author_and_date" => "arab | 04 November 2025",
+                "isi" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae consequatur mollitia dolor, magnam, dolores quaerat fuga eligendi sint, nisi vitae in natus odit. Enim ratione eaque sequi quibusdam id voluptatibus."
 
+            ]
         ];
-        // ini masih menggunakan data dummy
-        // return $dummyArt;
 
-        // ini sudah menggunakan database
-        return  Article::orderBy('id')->get()->toArray();
+        foreach ($data as $item) {
+            Article::updateOrCreate(
+                ['slug' => $item['slug']],
+                $item
+            );
+        }
     }
-    public static function getOne($slug): array
-    {
-        // Ini Callback
-        // return Arr::first(static::all(), function ($allData) use ($slug) {
-        //     return $allData["slug"] == $slug;
-        // });
-
-        // ini arrow function
-        // return Arr::first(static::all(), fn($data) => $data['slug'] == $slug);
-
-
-        // ini dari database
-        $article = Article::where('slug', $slug)->first();
-        return $article ? $article->toArray() : [];
-    }
-};
+}
