@@ -15,12 +15,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Articles extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'slug',
         'title',
         'author',
         'isi'
     ];
+
 
     // Opsi untuk jika kita mau merubah nama table
     // protected $table = "articles_kita";

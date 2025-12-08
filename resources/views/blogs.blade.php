@@ -7,12 +7,11 @@
         </div>
     @else
         @foreach ($article as $item)
-            <div class="border-black flex flex-col gap-10">
+            <div class="flex flex-col gap-10 border-black">
                 <x-article.article-card :titleart="$item->title" :author="$item->author" :paragraf="$item->isi" :slug="$item->slug"
                     :created_at="$item->created_at->diffForhumans()" />
                 {{-- diffForhumans() berfungsi untuk format tanggal --}}
             </div>
         @endforeach
     @endif
-
 </x-layout>
