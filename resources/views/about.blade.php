@@ -2,6 +2,6 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     <div>
 
-        <h1>Halaman about</h1>
+        <h1 class="">Halaman about</h1>
     </div>
 </x-layout>
