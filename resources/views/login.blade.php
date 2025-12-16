@@ -7,19 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
     <div class="flex items-center justify-center min-h-screen bg-gradient-to-br ">
         <div class="grid w-full max-w-4xl grid-cols-1 overflow-hidden bg-white shadow-2xl rounded-2xl md:grid-cols-2">
 
-            <!-- LEFT : IMAGE -->
+            
             <div class="hidden md:block">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Login Image"
                     class="object-cover w-full h-full">
             </div>
 
-            <!-- RIGHT : FORM -->
+
             <div class="flex flex-col justify-center p-10">
                 <h2 class="mb-2 text-3xl font-bold text-gray-800">
                     Welcome Back 👋

@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
 </head>
 
@@ -14,7 +20,7 @@
 
     <div class="flex items-center justify-center min-h-screen bg-gradient-to-br">
         <div
-            class="grid w-full max-w-4xl h-[560px] grid-cols-1 overflow-hidden bg-white shadow-2xl rounded-2xl md:grid-cols-2">
+            class="grid w-full max-w-4xl grid-cols-1 overflow-hidden bg-white shadow-2xl h-fit rounded-2xl md:grid-cols-2">
 
             <!-- LEFT : IMAGE -->
             <div class="hidden bg-center bg-cover md:block"
@@ -40,6 +46,14 @@
                         <input type="email" name="email"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             placeholder="you@example.com" required>
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-sm font-medium text-gray-700">
+                            Name
+                        </label>
+                        <input type="text" name="name"
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            placeholder="Your Name" required>
                     </div>
 
                     <div>

@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Models\Articles;
+use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth');
 
 
+
 /*
 |--------------------------------------------------------------------------
 | PROTECTED ROUTES
@@ -41,18 +45,31 @@ Route::get('/home', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/hello', function () {
-    return view('hello');
-});
-
 Route::get('/about', function () {
     return view('about', ['title' => 'About']);
 });
 
-Route::get('/blogs', function () {
+
+Route::get('/blogs', function (Request $request) {
+
+    $categories = Categories::all();
+
+    $activeCategory = $request->query('category');
+
+    $articles = Articles::with(['author', 'category'])
+        ->when($activeCategory, function ($query) use ($activeCategory) {
+            $query->whereHas('category', function ($q) use ($activeCategory) {
+                $q->where('slug', $activeCategory);
+            });
+        })
+        ->latest()
+        ->get();
+
     return view('blogs', [
         'title' => 'Blogs',
-        'article' => Articles::all()
+        'article' => $articles,
+        'categories' => $categories,
+        'activeCategory' => $activeCategory
     ]);
 });
 
@@ -62,4 +79,20 @@ Route::get('/blog/{articles:slug}', function (Articles $articles) {
 
 Route::get('/contacts', function () {
     return view('contacts', ['title' => 'Contacts']);
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Number of authors writing articles
+|--------------------------------------------------------------------------
+*/
+
+Route::get("/authors/{id}", function ($id) {
+    $author = User::with("articles")->findOrFail($id);
+
+    return view("authors", data: [
+        "title" => "Authors Detail",
+        "author" => $author
+    ]);
 });

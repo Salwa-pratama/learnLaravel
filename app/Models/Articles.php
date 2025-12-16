@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Categories;
+use App\Models\User;
 
 /**
  * @property string $slug
@@ -19,9 +21,21 @@ class Articles extends Model
     protected $fillable = [
         'slug',
         'title',
-        'author',
-        'isi'
+        'author_id',
+        'isi',
+        "category_id",
+
     ];
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Categories::class);
+    }
 
 
     // Opsi untuk jika kita mau merubah nama table

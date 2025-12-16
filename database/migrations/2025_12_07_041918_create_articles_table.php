@@ -15,7 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('title');
-            $table->string('author')->nullable();
+            $table->foreignId("author_id")->constrained(
+                table: "users",
+                indexName: "artciles_authot_id"
+            );
+            $table->foreignId("category_id")->constrained(
+                table: "categories",
+                indexName: "articles To categories"
+            );
             $table->text('isi');
             $table->timestamps();
         });
@@ -28,4 +35,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('articles');
     }
+
+    // Opsi pertama untuk relationship sebuah table
+    // $table->unsignedBigInteger('author_id');
+    // $table->foreign('author_id')->references("id")->on("users");
 };

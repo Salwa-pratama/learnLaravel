@@ -24,10 +24,7 @@
                                     {{ $menu['name'] }}
                                 </x-nav-link>
                             @endforeach
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit">Logout</button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -62,9 +59,12 @@
                                     profile</a>
                                 <a href="#"
                                     class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-none">Settings</a>
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-none">Sign
-                                    out</a>
+
+                                <form action="{{ route('logout') }}" method="POST"
+                                    class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-none">
+                                    @csrf
+                                    <button type="submit" class="text-red-600">Sign Out</button>
+                                </form>
                             </el-menu>
                         </el-dropdown>
                     </div>
