@@ -1,6 +1,6 @@
 @php
     $menus = [
-        ['name' => 'Home', 'href' => '/home'],
+        ['name' => 'Home', 'href' => 'home'],
         ['name' => 'About', 'href' => 'about'],
         ['name' => 'Blogs', 'href' => 'blogs'],
         ['name' => 'Contacts', 'href' => 'contacts'],
@@ -20,7 +20,7 @@
                         <div class="flex items-baseline ml-10 space-x-4">
                             <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                             @foreach ($menus as $menu)
-                                <x-nav-link href="{{ $menu['href'] }}" :active="request()->is(ltrim($menu['href'], 'home'))">
+                                <x-nav-link href="{{ $menu['href'] }}" :active="request()->is(ltrim($menu['href'], '/home'))">
                                     {{ $menu['name'] }}
                                 </x-nav-link>
                             @endforeach
@@ -60,19 +60,23 @@
                                 <a href="#"
                                     class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-none">Settings</a>
 
-                                <form action="{{ route('logout') }}" method="POST"
-                                    class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-none">
-                                    @csrf
-                                    <button type="submit" class="text-red-600">Sign Out</button>
-                                </form>
+                                <button type="submit" onclick="document.getElementById('logoutDesk').showModal()"
+                                    class="block px-3 py-2 text-sm text-red-600 focus:bg-white/5 focus:outline-none">Sign
+                                    Out</button>
+
+
                             </el-menu>
                         </el-dropdown>
+                        {{-- Pop Up Confirm LogOut --}}
+                        <x-article.pop-up-modal id="logoutDesk" title="Yakin mau logout"
+                            subtitle="Kamu akan keluar dari akun ini." action="{{ route('logout') }}" method="POST"
+                            confirm-text="Gua mau keluar" cancel-text="Ngg jadi ah" />
                     </div>
                 </div>
                 <div class="flex -mr-2 md:hidden">
                     <!-- Mobile menu button -->
                     <button type="button" command="--toggle" commandfor="mobile-menu"
-                        class="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-white/5 hover:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                        class="relative inline-flex items-center p-2 text-gray-400 rounded-md justify-normaltify-center cur hover:bg-white/5 hover:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
                         <span class="absolute -inset-0.5"></span>
                         <span class="sr-only">Open main menu</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -101,8 +105,7 @@
             <div class="pt-4 pb-3 border-t border-white/10">
                 <div class="flex items-center px-5">
                     <div class="shrink-0">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
+                        <img src="{{ asset('storage/profile.jpeg') }}" alt=""
                             class="rounded-full size-10 outline outline-1 -outline-offset-1 outline-white/10" />
                     </div>
                     <div class="ml-3">
@@ -127,11 +130,17 @@
                         profile</a>
                     <a href="#"
                         class="block px-3 py-2 text-base font-medium text-gray-400 rounded-md hover:bg-white/5 hover:text-white">Settings</a>
-                    <a href="#"
-                        class="block px-3 py-2 text-base font-medium text-gray-400 rounded-md hover:bg-white/5 hover:text-white">Sign
-                        out</a>
+
+                    <button type="submit" onclick="document.getElementById('logoutModal').showModal()"
+                        class="block px-3 py-2 text-sm text-red-600 focus:bg-white/5 focus:outline-none">Sign
+                        Out</button>
+
                 </div>
             </div>
         </el-disclosure>
     </nav>
+    <x-article.pop-up-modal id="logoutModal" title="Yakin mau logout"
+        subtitle="Kamu akan keluar dari
+                        akun ini." action="{{ route('logout') }}"
+        method="POST" confirm-text="Gua mau keluar" cancel-text="Ngg jadi ah" />
 </header>

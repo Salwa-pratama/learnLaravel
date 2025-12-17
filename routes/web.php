@@ -51,11 +51,8 @@ Route::get('/about', function () {
 
 
 Route::get('/blogs', function (Request $request) {
-
     $categories = Categories::all();
-
     $activeCategory = $request->query('category');
-
     $articles = Articles::with(['author', 'category'])
         ->when($activeCategory, function ($query) use ($activeCategory) {
             $query->whereHas('category', function ($q) use ($activeCategory) {
@@ -64,7 +61,6 @@ Route::get('/blogs', function (Request $request) {
         })
         ->latest()
         ->get();
-
     return view('blogs', [
         'title' => 'Blogs',
         'article' => $articles,
@@ -73,9 +69,11 @@ Route::get('/blogs', function (Request $request) {
     ]);
 });
 
+
 Route::get('/blog/{articles:slug}', function (Articles $articles) {
     return view('blogdetail', ['blog' => $articles]);
 });
+
 
 Route::get('/contacts', function () {
     return view('contacts', ['title' => 'Contacts']);
@@ -88,9 +86,10 @@ Route::get('/contacts', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get("/authors/{id}", function ($id) {
-    $author = User::with("articles")->findOrFail($id);
 
+
+Route::get("/authors/{id}", function ($id) {
+    $author = User::with(["articles.category", "articles.author"])->findOrFail($id);
     return view("authors", data: [
         "title" => "Authors Detail",
         "author" => $author
