@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="max-w-screen-xl px-4 mx-auto lg:py-4 lg:px-6">
-
         <div class="flex items-center py-4 ">
+            {{-- Category DrobDown --}}
             <div class="flex items-center justify-between w-full ">
                 <form action="/blogs" method="GET" class=" h-fit">
                     @if (request('search'))
@@ -20,6 +20,10 @@
                 </form>
                 <p class="text-slate-600">{{ count($article) }} Articles</p>
             </div>
+        </div>
+        {{-- Pagination --}}
+        <div class="py-2">
+            {{ $article->links() }}
         </div>
         <div class="grid gap-8 lg:grid-cols-2">
             @if (count($article) == 0)

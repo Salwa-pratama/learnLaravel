@@ -51,29 +51,14 @@ Route::get('/about', function () {
 
 
 Route::get('/blogs', function (Request $request) {
-    $search = $request->query("search");
-    
-    $categories = Categories::all();
-    $activeCategory = $request->query('category');
-    $articlesEager = Articles::with(['author', 'category'])
-        ->when($activeCategory, function ($query) use ($activeCategory) {
-            $query->whereHas('category', function ($q) use ($activeCategory) {
-                $q->where('slug', $activeCategory);
-            });
-        })
-        ->when($search, function ($query) use ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('isi', 'like', "%{$search}%");
-            });
-        })
-        ->latest()
-        ->get();
     return view('blogs', [
         'title' => 'Blogs',
-        'article' => $articlesEager,
-        'categories' => $categories,
-        'activeCategory' => $activeCategory
+        'article' => Articles::with(["author", "category"])
+            ->latest()
+            ->filter($request->only(["search", "category"]))
+            ->paginate(10)->withQueryString(),
+        'categories' => Categories::all(),
+        'activeCategory' => $request->query("category")
     ]);
 })->name("blogs");
 
@@ -100,10 +85,16 @@ Route::get('/contacts', function () {
 
 
 
-Route::get("/authors/{id}", function ($id) {
-    $author = User::with(["articles.category", "articles.author"])->findOrFail($id);
+Route::get("/authors/{id}", function ($id, Request $request) {
     return view("authors", data: [
         "title" => "Authors Detail",
-        "author" => $author
+        "author" => User::findOrFail($id),
+        "articles" => Articles::with(["category", "author"])
+            ->where("author_id", User::findOrFail($id)->id)
+            ->latest()
+            ->filter($request->only(["category", "search"]))
+            ->get(),
+        "categories" => Categories::all(),
+        'activeCategory' => $request->query("category")
     ]);
 });
