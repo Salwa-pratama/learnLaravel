@@ -51,6 +51,8 @@ Route::get('/about', function () {
 
 
 Route::get('/blogs', function (Request $request) {
+    $search = $request->query("search");
+    
     $categories = Categories::all();
     $activeCategory = $request->query('category');
     $articlesEager = Articles::with(['author', 'category'])
@@ -59,13 +61,12 @@ Route::get('/blogs', function (Request $request) {
                 $q->where('slug', $activeCategory);
             });
         })
-        ->latest()
-        ->get();
-    $articlesLazy = Articles::when($activeCategory, function ($query) use ($activeCategory) {
-        $query->whereHas('category', function ($q) use ($activeCategory) {
-            $q->where('slug', $activeCategory);
-        });
-    })
+        ->when($search, function ($query) use ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('isi', 'like', "%{$search}%");
+            });
+        })
         ->latest()
         ->get();
     return view('blogs', [
@@ -74,7 +75,7 @@ Route::get('/blogs', function (Request $request) {
         'categories' => $categories,
         'activeCategory' => $activeCategory
     ]);
-});
+})->name("blogs");
 
 
 Route::get('/blog/{articles:slug}', function (Articles $articles) {

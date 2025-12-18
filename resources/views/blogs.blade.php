@@ -1,13 +1,16 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="max-w-screen-xl px-4 mx-auto lg:py-4 lg:px-6">
+
         <div class="flex items-center py-4 ">
             <div class="flex items-center justify-between w-full ">
                 <form action="/blogs" method="GET" class=" h-fit">
+                    @if (request('search'))
+                        <input type="hidden" name="search" value="{{ request('search') }}">
+                    @endif
                     <select name="category" onchange="this.form.submit()"
                         class="px-3 text-sm bg-white border border-gray-300 rounded-md h-9 focus:outline-none focus:ring-2 focus:ring-blue-400">
                         <option value="">All Category</option>
-
                         @foreach ($categories as $cat)
                             <option value="{{ $cat->slug }}" {{ $activeCategory == $cat->slug ? 'selected' : '' }}>
                                 {{ $cat->category }}
@@ -34,10 +37,4 @@
             @endif
         </div>
     </div>
-
-
-
-
-
-
 </x-layout>

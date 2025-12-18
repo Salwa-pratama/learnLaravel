@@ -1,7 +1,19 @@
+@php
+    $categoryColors = [
+        'programming' => 'bg-blue-100 text-black',
+        'kuliner' => 'bg-red-100 text-black',
+        'olah raga' => 'bg-green-100 text-black',
+        'design' => 'bg-orange-100 text-black',
+    ];
+    $categoryClass = $categoryColors[strtolower($blog->category->category)] ?? 'bg-gray-100 text-gray-800';
+@endphp
+
+
 <x-layout-blog>
-    <x-slot name="title">{{ Str::limit($blog['title'], 15) }}</x-slot>
     <x-article.article-detail :category="$blog->category->category" :author="$blog->author" :isi="$blog->isi" :title="$blog->title"
         :created_at="$blog->created_at->diffForHumans()" />
+
+    {{-- Related Articles --}}
     <aside aria-label="Related articles" class="py-8 lg:py-24 ">
         <div class="max-w-screen-xl px-4 mx-auto">
             <div class="flex items-center justify-between w-full p-0 h-fit  mb-10">
@@ -27,7 +39,17 @@
                                 class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
                                 ReadMore
                             </a>
-                            <a class="bg-orange-600/25 px-2 rounded-md">{{ $item->category->category }}</a>
+                            <span
+                                class="{{ $categoryClass }} text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded ">
+                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                        clip-rule="evenodd"></path>
+                                    <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+                                </svg>
+                                {{ $blog->category->category }}
+                            </span>
                         </div>
                     </article>
                 @endforeach
