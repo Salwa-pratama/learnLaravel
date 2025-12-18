@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // ini antisipasi untuk lazy loading
-        Model::preventLazyLoading();
+        // Model::preventLazyLoading();
     }
 }

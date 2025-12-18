@@ -1,8 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-
     <div class="max-w-screen-xl px-4 mx-auto lg:py-4 lg:px-6">
-
         <div class="flex items-center py-4 ">
             <div class="flex items-center justify-between w-full ">
                 <form action="/blogs" method="GET" class=" h-fit">
@@ -34,7 +32,6 @@
                     </div>
                 @endforeach
             @endif
-
         </div>
     </div>
 

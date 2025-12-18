@@ -53,7 +53,7 @@ Route::get('/about', function () {
 Route::get('/blogs', function (Request $request) {
     $categories = Categories::all();
     $activeCategory = $request->query('category');
-    $articles = Articles::with(['author', 'category'])
+    $articlesEager = Articles::with(['author', 'category'])
         ->when($activeCategory, function ($query) use ($activeCategory) {
             $query->whereHas('category', function ($q) use ($activeCategory) {
                 $q->where('slug', $activeCategory);
@@ -61,9 +61,16 @@ Route::get('/blogs', function (Request $request) {
         })
         ->latest()
         ->get();
+    $articlesLazy = Articles::when($activeCategory, function ($query) use ($activeCategory) {
+        $query->whereHas('category', function ($q) use ($activeCategory) {
+            $q->where('slug', $activeCategory);
+        });
+    })
+        ->latest()
+        ->get();
     return view('blogs', [
         'title' => 'Blogs',
-        'article' => $articles,
+        'article' => $articlesEager,
         'categories' => $categories,
         'activeCategory' => $activeCategory
     ]);
@@ -71,14 +78,18 @@ Route::get('/blogs', function (Request $request) {
 
 
 Route::get('/blog/{articles:slug}', function (Articles $articles) {
-    return view('blogdetail', ['blog' => $articles]);
+    $relatedArticles = Articles::with(["author", "category"])
+        ->where("category_id", $articles->category_id)
+        ->where("id", '!=', $articles->id)
+        ->take(8)
+        ->latest()
+        ->get();
+    return view('blogdetail', ['blog' => $articles, 'relatedArticles' => $relatedArticles]);
 });
-
 
 Route::get('/contacts', function () {
     return view('contacts', ['title' => 'Contacts']);
 });
-
 
 /*
 |--------------------------------------------------------------------------

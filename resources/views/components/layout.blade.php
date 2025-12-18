@@ -19,14 +19,16 @@
 
 <body class="min-h-full">
     {{-- Ini bagian Header --}}
-    <x-nav-bar></x-nav-bar>
-    <x-header>{{ $title }}</x-header>
-    <main>
+    <div class="sticky top-0 z-50 w-full ">
+        <x-nav-bar></x-nav-bar>
+        <x-header>{{ $title }}</x-header>
+    </div>
+    <main class="border ">
         <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-
             {{ $slot }}
         </div>
     </main>
+    <x-footer></x-footer>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </body>
 

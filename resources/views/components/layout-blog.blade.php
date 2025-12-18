@@ -17,12 +17,15 @@
 
 <body class="min-h-full">
     {{-- Ini bagian Header --}}
-    <x-header>{{ $title }}</x-header>
+    <div class="sticky top-0 ">
+        <x-header>{{ $title }}</x-header>
+    </div>
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
             {{ $slot }}
         </div>
     </main>
+    <x-footer />
 </body>
 
 </html>
