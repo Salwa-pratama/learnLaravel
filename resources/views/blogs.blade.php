@@ -22,9 +22,7 @@
             </div>
         </div>
         {{-- Pagination --}}
-        <div class="py-2">
-            {{ $article->links() }}
-        </div>
+
         <div class="grid gap-8 lg:grid-cols-2">
             @if (count($article) == 0)
                 <div class="items-center text-center">
@@ -39,6 +37,9 @@
                     </div>
                 @endforeach
             @endif
+        </div>
+        <div class="py-8">
+            {{ $article->links() }}
         </div>
     </div>
 </x-layout>

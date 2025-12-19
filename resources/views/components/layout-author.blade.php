@@ -1,3 +1,5 @@
+@props(['name', 'articles', 'author_id'])
+
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-slate-200">
 
@@ -21,6 +23,14 @@
     {{-- Ini bagian Header --}}
     <div class="sticky top-0 z-50 w-full ">
         <x-header>{{ $title ?? '' }}</x-header>
+        <header
+            class="relative p-0 bg-gray-400/70 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+            <div class="flex items-center justify-between px-2 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+                <h1 class="text-xl  text-white">Article By {{ $name }} </h1>
+                <x-search :action="url('/authors/' . $author_id)" />
+
+            </div>
+        </header>
     </div>
 
     <main>

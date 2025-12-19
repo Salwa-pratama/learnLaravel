@@ -1,12 +1,5 @@
-<x-layout-author>
-    <div class="p-2 flex justify-between w-full">
-        <h1 class="text-xl">Article By {{ $author->name }} </h1>
-        <h1 class="text-sm  line-clamp-none  bg-gray-800 text-white rounded-md px-2">{{ count($articles) }}
-            Articles
-        </h1>
-    </div>
-
-    <div class="flex w-full">
+<x-layout-author :name="$author->name" :articles="$articles" :author_id="$author->id">
+    <div class="flex w-full  mb-10">
         <div class="flex items-center justify-between w-full ">
             <form action="{{ url('/authors/' . $author->id) }}" method="GET" class=" h-fit">
                 @if (request('search'))
@@ -22,9 +15,11 @@
                     @endforeach
                 </select>
             </form>
+            <p class="text-slate-600">{{ count($articles) }} Articles</p>
         </div>
 
-        <x-search :action="url('/authors/' . $author->id)" />
+
+
 
     </div>
     <div class="grid gap-8 lg:grid-cols-2">
