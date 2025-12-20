@@ -43,9 +43,14 @@
                         <label class="block mb-1 text-sm font-medium text-gray-700">
                             Username
                         </label>
-                        <input type="text" name="username"
+                        <input type="text" name="username" value="{{ old('username') }}"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             placeholder="Create Username" required autocomplete="off">
+                        @error('username')
+                            <div class="p-3 text-sm text-red-600 bg-red-100 rounded-lg">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label class="block mb-1 text-sm font-medium text-gray-700">
@@ -53,7 +58,12 @@
                         </label>
                         <input type="email" name="email"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                            placeholder="you@example.com" required>
+                            placeholder="you@example.com" required autocomplete="off">
+                        @error('email')
+                            <div class="p-3 text-sm text-red-600 bg-red-100 rounded-lg">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label class="block mb-1 text-sm font-medium text-gray-700">
@@ -61,7 +71,12 @@
                         </label>
                         <input type="text" name="name"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                            placeholder="Your Name" required>
+                            placeholder="Your Name" required autocomplete="off">
+                        @error('name')
+                            <div class="p-3 text-sm text-red-600 bg-red-100 rounded-lg">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div>
@@ -70,7 +85,12 @@
                         </label>
                         <input type="password" name="password"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                            placeholder="••••••••" required>
+                            placeholder="••••••••" required autocomplete="new-password">
+                        @error('password')
+                            <div class="p-3 text-sm text-red-600 bg-red-100 rounded-lg">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div>
@@ -79,14 +99,10 @@
                         </label>
                         <input type="password" name="password_confirmation"
                             class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                            placeholder="••••••••" required>
+                            placeholder="••••••••" required autocomplete="new-password">
                     </div>
 
-                    @if ($errors->any())
-                        <div class="p-3 text-sm text-red-600 bg-red-100 rounded-lg">
-                            {{ $errors->first() }}
-                        </div>
-                    @endif
+
 
                     <button type="submit"
                         class="w-full py-3 font-semibold text-white transition duration-300 bg-indigo-600 rounded-lg hover:bg-indigo-700">
