@@ -41,6 +41,14 @@
 
                     <div>
                         <label class="block mb-1 text-sm font-medium text-gray-700">
+                            Username
+                        </label>
+                        <input type="text" name="username"
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            placeholder="Create Username" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-sm font-medium text-gray-700">
                             Email
                         </label>
                         <input type="email" name="email"

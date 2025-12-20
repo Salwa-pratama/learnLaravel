@@ -13,8 +13,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="shrink-0">
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                            alt="Your Company" class="size-8" />
+                        <img src="{{ asset('storage/logoApp.png') }}" alt="Your Company" class="size-8" />
                     </div>
                     <div class="hidden md:block">
                         <div class="flex items-baseline ml-10 space-x-4">
