@@ -9,16 +9,23 @@ use App\Models\User;
 
 class AuthorController extends Controller
 {
-    public function index($id, Request $request)
+    public function index(String $slug, Request $request)
+
     {
+        $author = User::whereRaw(
+            "LOWER(REPLACE(CONCAT(first_name, '-', last_name), ' ', '-')) = ?",
+            [$slug]
+        )->firstOrFail();
+
         return view("authors",  [
             "title" => "Author Detail",
-            "author" => User::findOrFail($id),
-            "articles" => Articles::with(["category", "author"])
-                ->where("author_id", User::findOrFail($id)->id)
+            "author" => $author,
+            "articles" => $author->articles()
+                ->with(['category', 'author'])
                 ->latest()
                 ->filter($request->only(["category", "search"]))
                 ->get(),
+
             "categories" => Categories::all(),
             "activeCategory" => $request->query("category")
         ]);

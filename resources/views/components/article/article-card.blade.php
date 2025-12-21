@@ -1,14 +1,27 @@
-@props(['titleart', 'author', 'paragraf', 'slug', 'created_at', 'author_id', 'category'])
-
 @php
+    use Illuminate\Support\Str;
     $categoryColors = [
         'programming' => 'bg-blue-100 text-black',
         'kuliner' => 'bg-red-100 text-black',
         'olah raga' => 'bg-green-100 text-black',
         'design' => 'bg-orange-100 text-black',
     ];
+
     $categoryClass = $categoryColors[strtolower($category)] ?? 'bg-gray-100 text-gray-800';
+
 @endphp
+
+@props([
+    'titleart',
+    'author',
+    'paragraf',
+    'slug',
+    'created_at',
+    'author_id',
+    'category',
+    'author_first_name',
+    'author_last_name',
+])
 
 <article class="p-6 bg-white border border-gray-200 rounded-lg shadow-md ">
     <div class="flex items-center justify-between mb-5 text-gray-500">
@@ -32,8 +45,8 @@
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
                 alt="Bonnie Green avatar" />
             <span class="font-medium ">
-                <a class="hover:underline" href="/authors/{{ $author_id }}">
-                    {{ $author }}
+                <a href="{{ url('/authors/' . Str::slug($author_first_name . ' ' . $author_last_name)) }}">
+                    {{ $author_first_name }} {{ $author_last_name }}
                 </a>
             </span>
         </div>

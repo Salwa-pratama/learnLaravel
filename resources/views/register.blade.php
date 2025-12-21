@@ -15,6 +15,9 @@
                         <label for="floating_first_name"
                             class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">First
                             name</label>
+                        @error('first_name')
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     {{-- Last Name --}}
                     <div class="relative z-0 w-full mb-5 group">
@@ -24,8 +27,11 @@
                         <label for="floating_last_name"
                             class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Last
                             name</label>
+                        @error('last_name')
+                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
-                </div>  
+                </div>
                 {{-- username --}}
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="text" name="username" id="username"
@@ -33,6 +39,9 @@
                         placeholder=" " required />
                     <label for="username"
                         class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Username</label>
+                    @error('username')
+                        <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 {{-- Email --}}
                 <div class="relative z-0 w-full mb-5 group">
@@ -41,6 +50,9 @@
                         placeholder=" " required />
                     <label for="email"
                         class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+                    @error('email')
+                        <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 {{-- Password --}}
                 <div class="relative z-0 w-full mb-5 group">
@@ -49,19 +61,22 @@
                         placeholder=" " required />
                     <label for="password"
                         class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+                    @error('password')
+                        <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 {{-- Confirm Pssword --}}
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="repeat_password" id="floating_repeat_password"
+                    <input type="password" name="password_confirmation" id="password_confirmation"
                         class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
                         placeholder=" " required />
-                    <label for="floating_repeat_password"
+                    <label for="confirm_password"
                         class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Confirm
                         password</label>
+                    @error('password_confirmation')
+                        <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
-
-
-
                 <label for="remember" class="flex items-center mb-5">
                     <input id="remember" type="checkbox" value=""
                         class="w-4 h-4 border border-default-medium  bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft rounded-md"

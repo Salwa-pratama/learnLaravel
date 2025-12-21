@@ -65,4 +65,4 @@ Route::get('/contacts', function () {
 
 
 
-Route::get("/authors/{id}", [AuthorController::class, "index"]);
+Route::get("/authors/{slug}", [AuthorController::class, "index"]);

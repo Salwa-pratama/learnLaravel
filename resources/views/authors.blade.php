@@ -1,4 +1,8 @@
-<x-layout-author :name="$author->name" :articles="$articles" :author_id="$author->id">
+@php
+    $name = $author->first_name . ' ' . $author->last_name;
+@endphp
+
+<x-layout-author :name="$name" :articles="$articles" :author_id="$author->id">
     <div class="flex w-full  mb-10">
         <div class="flex items-center justify-between w-full ">
             <form action="{{ url('/authors/' . $author->id) }}" method="GET" class=" h-fit">
@@ -30,8 +34,8 @@
         @else
             @foreach ($articles as $item)
                 <div class="flex flex-col gap-10 border-black">
-                    <x-article.article-card :titleart="$item->title" :author="$item->author->name" :paragraf="$item->isi" :slug="$item->slug"
-                        :author_id="$item->author_id" :created_at="$item->created_at->diffForHumans()" :category="$item->category->category" />
+                    <x-article.article-card :author_first_name="$item->author->first_name" :author_last_name="$item->author->last_name" :titleart="$item->title" :paragraf="$item->isi"
+                        :slug="$item->slug" :author_id="$item->author_id" :created_at="$item->created_at->diffForHumans()" :category="$item->category->category" />
                     {{-- diffForhumans() berfungsi untuk format tanggal --}}
                 </div>
             @endforeach

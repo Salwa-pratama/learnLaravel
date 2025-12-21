@@ -22,7 +22,7 @@
         @if ($hasTitle === 'Blogs')
             <x-search :action="route('blogs')" />
         @else
-            <a href="#" class="p-2 text-white rounded-lg ">{{ auth()->user()->name ?? 'Guest' }}</a>
+            <a href="#" class="p-2 text-white rounded-lg ">{{ auth()->user()->username ?? 'Guest' }}</a>
         @endif
     </div>
 </header>

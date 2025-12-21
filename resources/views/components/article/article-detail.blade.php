@@ -11,7 +11,8 @@
                             src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese Leos">
                         <div>
                             <a href="#" rel="author"
-                                class="text-xl font-bold text-gray-900 ">{{ $author->name }}</a>
+                                class="text-xl font-bold text-gray-900 ">{{ $author->first_name }}
+                                {{ $author->last_name }}</a>
                             <p class="text-base text-gray-500 dark:text-gray-400">{{ $category }}</p>
                             <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08"
                                     title="February 8th, 2022">{{ $created_at }}</time></p>
