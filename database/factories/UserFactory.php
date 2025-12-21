@@ -23,8 +23,11 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $fullName = fake()->name();
+        $names = explode(' ', $fullName, 2);
         return [
-            'name' => fake()->name(),
+            "first_name" => $names[0],
+            "last_name" => $names[1],
             "username" => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
