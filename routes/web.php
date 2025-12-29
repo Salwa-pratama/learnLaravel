@@ -77,7 +77,7 @@ Route::get("/authors/{slug}", [AuthorController::class, "index"]);
 
 // dashboard pages
 Route::get('/admin', function () {
-    return view('admin.pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
+    return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
 })->name('dashboard');
 
 // calender pages
