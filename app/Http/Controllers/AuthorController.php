@@ -17,6 +17,7 @@ class AuthorController extends Controller
             [$slug]
         )->firstOrFail();
 
+
         return view("authors",  [
             "title" => "Author Detail",
             "author" => $author,

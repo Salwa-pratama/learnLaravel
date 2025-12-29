@@ -44,13 +44,8 @@ Route::get('/home', [HomeController::class, "index"])->middleware('auth');
 */
 
 Route::get('/about', [AboutController::class, "index"]);
-
-
-
 Route::get('/blogs', [BlogsController::class, "index"])->name("blogs");
-
 Route::get('/blog/{articles:slug}', [BlogsController::class, "showDetail"]);
-
 Route::get('/contacts', function () {
     return view('contacts', ['title' => 'Contacts']);
 });
