@@ -57,7 +57,9 @@ Route::get('/contacts', function () {
 | Number of authors writing articles
 |--------------------------------------------------------------------------
 */
-
-
-
 Route::get("/authors/{slug}", [AuthorController::class, "index"]);
+
+
+
+
+
