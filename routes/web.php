@@ -78,11 +78,11 @@ Route::get("/authors/{slug}", [AuthorController::class, "index"]);
 // dashboard pages
 Route::get('/admin', function () {
     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->name('dashboard');
+})->name('dashboard');  
 
 // calender pages
 Route::get('/calendar', function () {
-    return view('admin.pages.calender', ['title' => 'Calendar']);
+    return view('pages.calender', ['title' => 'Calendar']);
 })->name('calendar');
 
 // profile pages

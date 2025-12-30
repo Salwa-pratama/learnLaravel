@@ -15,7 +15,7 @@
             'percentage' => 23
         ],
     ];
-    
+
     $countriesList = !empty($countries) ? $countries : $defaultCountries;
 @endphp
 
@@ -31,7 +31,7 @@
         </div>
 
          <!-- Dropdown Menu -->
-         <x-common.dropdown-menu />
+         <x-admin.common.dropdown-menu />
          <!-- End Dropdown Menu -->
     </div>
 
@@ -58,7 +58,7 @@
 
                 <div class="flex w-full max-w-[140px] items-center gap-3">
                     <div class="relative block h-2 w-full max-w-[100px] rounded-sm bg-gray-200 dark:bg-gray-800">
-                        <div 
+                        <div
                             class="absolute left-0 top-0 flex h-full items-center justify-center rounded-sm bg-brand-500 text-xs font-medium text-white"
                             style="width: {{ $country['percentage'] }}%"
                         ></div>

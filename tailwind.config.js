@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Poppins"],
+                outfit: ["Outfit", "sans-serif"],
             },
 
             // Colors Flowbite

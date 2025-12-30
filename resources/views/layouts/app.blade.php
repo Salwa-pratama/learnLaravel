@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +10,7 @@
     <title>{{ $title ?? 'Dashboard' }} | TailAdmin - Laravel Tailwind CSS Admin Dashboard Template</title>
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 
     <!-- Alpine.js -->
     {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
@@ -25,7 +26,7 @@
                     this.theme = savedTheme || systemTheme;
                     this.updateTheme();
                 },
-                
+
                 theme: 'light',
                 toggle() {
                     this.theme = this.theme === 'light' ? 'dark' : 'light';
@@ -107,7 +108,7 @@ const checkMobile = () => {
 window.addEventListener('resize', checkMobile);">
 
     {{-- preloader --}}
-    <x-common.preloader />
+    <x-admin.common.preloader />
     {{-- preloader end --}}
 
     <div class="min-h-screen xl:flex">
