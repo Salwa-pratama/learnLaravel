@@ -25,6 +25,7 @@
                     this.theme = savedTheme || systemTheme;
                     this.updateTheme();
                 },
+                
                 theme: 'light',
                 toggle() {
                     this.theme = this.theme === 'light' ? 'dark' : 'light';
