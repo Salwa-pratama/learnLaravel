@@ -152,7 +152,7 @@
             <div class="bg-brand-950 relative hidden h-full w-full items-center lg:grid lg:w-1/2 dark:bg-white/5">
                 <div class="z-1 flex items-center justify-center">
                     <!-- ===== Common Grid Shape Start ===== -->
-                    <x-common.common-grid-shape />
+                    <x-admin.common.common-grid-shape />
                     <div class="flex max-w-xs flex-col items-center">
                         <a href="/" class="mb-4 block">
                             <img src="./images/logo/auth-logo.svg" alt="Logo" />

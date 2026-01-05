@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\common;
+namespace App\View\Components\admin\Common;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class TableDropdown extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.common.table-dropdown');
+        return view('components.admin.common.table-dropdown');
     }
 }

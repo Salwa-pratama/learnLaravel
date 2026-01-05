@@ -78,7 +78,7 @@ Route::get("/authors/{slug}", [AuthorController::class, "index"]);
 // dashboard pages
 Route::get('/admin', function () {
     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->name('dashboard');  
+})->name('dashboard');
 
 // calender pages
 Route::get('/calendar', function () {
@@ -87,70 +87,70 @@ Route::get('/calendar', function () {
 
 // profile pages
 Route::get('/profile', function () {
-    return view('admin.pages.profile', ['title' => 'Profile']);
+    return view('pages.profile', ['title' => 'Profile']);
 })->name('profile');
 
 // form pages
 Route::get('/form-elements', function () {
-    return view('admin.pages.form.form-elements', ['title' => 'Form Elements']);
+    return view('pages.form.form-elements', ['title' => 'Form Elements']);
 })->name('form-elements');
 
 // tables pages
 Route::get('/basic-tables', function () {
-    return view('admin.pages.tables.basic-tables', ['title' => 'Basic Tables']);
+    return view('pages.tables.basic-tables', ['title' => 'Basic Tables']);
 })->name('basic-tables');
 
 // pages
 
 Route::get('/blank', function () {
-    return view('admin.pages.blank', ['title' => 'Blank']);
+    return view('pages.blank', ['title' => 'Blank']);
 })->name('blank');
 
 // error pages
 Route::get('/error-404', function () {
-    return view('admin.pages.errors.error-404', ['title' => 'Error 404']);
+    return view('pages.errors.error-404', ['title' => 'Error 404']);
 })->name('error-404');
 
 // chart pages
 Route::get('/line-chart', function () {
-    return view('admin.pages.chart.line-chart', ['title' => 'Line Chart']);
+    return view('pages.chart.line-chart', ['title' => 'Line Chart']);
 })->name('line-chart');
 
 Route::get('/bar-chart', function () {
-    return view('admin.pages.chart.bar-chart', ['title' => 'Bar Chart']);
+    return view('pages.chart.bar-chart', ['title' => 'Bar Chart']);
 })->name('bar-chart');
 
 
 // authentication pages
 Route::get('/signin', function () {
-    return view('admin.pages.auth.signin', ['title' => 'Sign In']);
+    return view('pages.auth.signin', ['title' => 'Sign In']);
 })->name('signin');
 
 Route::get('/signup', function () {
-    return view('admin.pages.auth.signup', ['title' => 'Sign Up']);
+    return view('pages.auth.signup', ['title' => 'Sign Up']);
 })->name('signup');
 
 // ui elements pages
 Route::get('/alerts', function () {
-    return view('admin.pages.ui-elements.alerts', ['title' => 'Alerts']);
+    return view('pages.ui-elements.alerts', ['title' => 'Alerts']);
 })->name('alerts');
 
 Route::get('/avatars', function () {
-    return view('admin.pages.ui-elements.avatars', ['title' => 'Avatars']);
+    return view('pages.ui-elements.avatars', ['title' => 'Avatars']);
 })->name('avatars');
 
 Route::get('/badge', function () {
-    return view('admin.pages.ui-elements.badges', ['title' => 'Badges']);
+    return view('pages.ui-elements.badges', ['title' => 'Badges']);
 })->name('badges');
 
 Route::get('/buttons', function () {
-    return view('admin.pages.ui-elements.buttons', ['title' => 'Buttons']);
+    return view('pages.ui-elements.buttons', ['title' => 'Buttons']);
 })->name('buttons');
 
 Route::get('/image', function () {
-    return view('admin.pages.ui-elements.images', ['title' => 'Images']);
+    return view('pages.ui-elements.images', ['title' => 'Images']);
 })->name('images');
 
 Route::get('/videos', function () {
-    return view('admin.pages.ui-elements.videos', ['title' => 'Videos']);
+    return view('pages.ui-elements.videos', ['title' => 'Videos']);
 })->name('videos');

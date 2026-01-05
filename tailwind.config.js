@@ -34,5 +34,11 @@ export default {
             },
         },
     },
+    server: {
+        host: true,
+        hmr: {
+            host: "localhost",
+        },
+    },
     plugins: [],
 };

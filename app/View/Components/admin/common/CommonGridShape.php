@@ -1,6 +1,8 @@
 <?php
 
-namespace App\View\Components\common;
+namespace App\View\Components\admin\Common;
+
+
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +23,6 @@ class CommonGridShape extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.common.common-grid-shape');
+        return view('components.admin.common.common-grid-shape');
     }
 }

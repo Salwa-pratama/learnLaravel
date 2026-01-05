@@ -1,0 +1,23 @@
+{
+    "name": "Laravel DevContainer (Podman)",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+
+    "forwardPorts": [8000, 5173],
+    
+    "postCreateCommand": "composer install && npm install",
+
+    "postStartCommand": "php artisan serve --host=0.0.0.0 --port=8000 & npm run dev",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "onecentlin.laravel-blade",
+                "ryannaddy.laravel-artisan",
+                "bmewburn.vscode-intelephense-client",
+                "esbenp.prettier-vscode"
+            ]
+        }
+    }
+}

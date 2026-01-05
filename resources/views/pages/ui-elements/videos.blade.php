@@ -1,9 +1,8 @@
-
 @extends('layouts.app')
 
 @section('content')
     {{-- Page Breadcrumb --}}
-    <x-common.page-breadcrumb pageTitle="Videos" />
+    <x-admin.common.page-breadcrumb pageTitle="Videos" />
 
     <div class="grid grid-cols-1 gap-5 sm:gap-6 xl:grid-cols-2">
 

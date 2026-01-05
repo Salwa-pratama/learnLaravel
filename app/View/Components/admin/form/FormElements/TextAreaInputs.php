@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\form\FormElements;
+namespace App\View\Components\admin\form\FormElements;
 
 use Closure;
 use Illuminate\Contracts\View\View;
